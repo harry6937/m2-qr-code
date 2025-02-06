@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>M2 QR Code</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      text-align: center;
+      background-color: red; /* 红色背景 */
+      color: white;          /* 白色字体 */
+      margin: 0;
+    }
+    h1 {
+      margin-bottom: 20px;
+    }
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+      margin: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    input {
+      background-color: #fff;
+      color: #000;
+    }
+    button {
+      background-color: #fff;
+      color: #000;
+      cursor: pointer;
+    }
+    #qrcode {
+      margin-top: 20px;
+      display: inline-block;
+      background: #fff;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    /* 广告区域样式 */
+    #ad-container {
+      margin-top: 20px;
+      display: none; /* 初始隐藏广告 */
+    }
+    /* 广告部分的样式 */
+    #advertisement {
+      margin-top: 40px;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.2);
+      border-top: 1px solid #fff;
+    }
+    #advertisement h2 {
+      margin-bottom: 10px;
+    }
+    #advertisement p {
+      margin: 5px 0;
+      font-size: 18px;
+    }
+  </style>
+  <!-- Google AdSense 广告代码 -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5097990870904917"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+  <h1>M2 QR Code</h1>
+  <p>请输入要生成二维码的文本或链接：</p>
+  <input type="text" id="text" placeholder="在这里输入文本或链接" size="40">
+  <button id="generate">生成二维码</button>
+  
+  <!-- 广告区域 -->
+  <div id="ad-container">
+    <ins class="adsbygoogle"
+        style="display:inline-block;width:728px;height:90px"
+        data-ad-client="ca-pub-5097990870904917"
+        data-ad-slot="1242746163"></ins>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
+
+  <div id="qrcode"></div>
+
+  <!-- 广告部分 -->
+  <div id="advertisement">
+    <h2>M2 Mobile Second Shop</h2>
+    <p>Shop1: 69street 37A</p>
+    <p>Shop2: 110steet 60*61</p>
+    <p>Shop3: Bangkok MBK</p>
+  </div>
+
+  <!-- 引入 QRCode.js 库 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script>
+    // 获取 DOM 元素
+    const generateButton = document.getElementById("generate");
+    const textInput = document.getElementById("text");
+    const qrcodeDiv = document.getElementById("qrcode");
+    const adContainer = document.getElementById("ad-container");
+
+    // 点击按钮时生成二维码
+    generateButton.addEventListener("click", () => {
+      // 显示广告
+      adContainer.style.display = "block";
+
+      // 清空之前生成的二维码
+      qrcodeDiv.innerHTML = "";
+      const text = textInput.value.trim();
+      if (!text) {
+        alert("请输入有效的文本或链接！");
+        return;
+      }
+      // 生成二维码
+      new QRCode(qrcodeDiv, {
+        text: text,
+        width: 256,
+        height: 256,
+        colorDark : "#000000",
+        colorLight : "#ffffff",
+        correctLevel : QRCode.CorrectLevel.H
+      });
+    });
+  </script>
+</body>
+</html>
